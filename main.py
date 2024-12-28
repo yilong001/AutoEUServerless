@@ -39,10 +39,10 @@ TG_API_HOST = "https://api.telegram.org"
 PROXIES = {"http": "http://127.0.0.1:10808", "https": "http://127.0.0.1:10808"}
 
 # 最大登录重试次数
-LOGIN_MAX_RETRY_COUNT = 5
+LOGIN_MAX_RETRY_COUNT = 10
 
 # 接收 PIN 的等待时间，单位为秒
-WAITING_TIME_OF_PIN = 15
+WAITING_TIME_OF_PIN = 30
 
 # 是否检查验证码解决器的使用情况
 CHECK_CAPTCHA_SOLVER_USAGE = True
@@ -93,7 +93,7 @@ def login_retry(*args, **kwargs):
             max_retry = kwargs.get("max_retry")
             # 默认重试 3 次
             if not max_retry:
-                max_retry = 3
+                max_retry = 8
             number = 0
             if ret == "-1":
                 while number < max_retry:
